@@ -1,10 +1,10 @@
 body {
-    font-family: $font-family-sans-serif;
+    font-family: $font-family-nanum;
 }
 
 .bg-primary .navbar-brand{
-    font-family: $font-family-sans-serif;
-    font-size: 1.5em;
+    font-family: $font-family-nanum;
+    font-size: 2rem;
     color: #FFF!important;
     text-decoration: none;
     &:hover {
@@ -115,7 +115,7 @@ body {
 //         &:hover:before {
 //           transform:  translateX(0);
 //         }
-    
+
 // }
 // }
 
