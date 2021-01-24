@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreRecipeRequest;
 
 class RecipeController extends Controller
@@ -44,7 +45,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        $categories = DB::table('recipe_categories')->pluck('name', 'id');
+
+        return view('recipes.create')
+            ->with('categories', $categories);
     }
 
     /**

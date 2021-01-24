@@ -14,8 +14,23 @@
             <div class="form-group">
                 <label for="title">Título Receta</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
-                    placeholder="Recipe title"value={{ old('title') }}>
+                    placeholder="Título de la receta" value={{ old('title') }}>
                 @error('title')
+                    <span class="invalid-feedback d-block font-weight-light" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="category">Categoría</label>
+                <select class="form-control @error('category') is-invalid @enderror" name="category" id="category">
+                    <option value="">--Selecciona una categoría--</option>
+                    @foreach($categories as $id => $category)
+                        <option value={{ $id }} {{ old('category') == $id ? 'selected' : '' }}>{{ $category }}</option>
+                    @endforeach
+                </select>
+                @error('category')
                     <span class="invalid-feedback d-block font-weight-light" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
