@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" integrity="sha512-5m1IeUDKtuFGvfgz32VVD0Jd/ySGX7xdLxhqemTmThxHdgqlgPdupWoSN8ThtUSLpAGBvA8DY2oO7jJCrGdxoA==" crossorigin="anonymous" />
+@endsection
+
 @section('buttons')
 <a class="btn btn-dark mr-2" href="{{ route('recipe.index') }}">Volver</a>
 @endsection
@@ -12,7 +16,7 @@
         <form action="{{ route('recipe.store') }}" method="POST" novalidate>
             @csrf
             <div class="form-group">
-                <label for="title">Título Receta</label>
+                <label class="font-weight-bold" for="title">Título Receta</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
                     placeholder="Título de la receta" value={{ old('title') }}>
                 @error('title')
@@ -23,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                <label for="category">Categoría</label>
+                <label class="font-weight-bold" for="category">Categoría</label>
                 <select class="form-control @error('category') is-invalid @enderror" name="category" id="category">
                     <option value="">--Selecciona una categoría--</option>
                     @foreach($categories as $id => $category)
@@ -38,9 +42,38 @@
             </div>
 
             <div class="form-group">
+                <label class="font-weight-bold" for="ingredients">Ingredientes</label>
+                <input type="hidden" name="ingredients" id="ingredients" value="{{ old('ingredients') }}">
+                <trix-editor class="form-control @error('ingredients') is-invalid @enderror" input="ingredients"></trix-editor>
+
+                @error('ingredients')
+                    <span class="invalid-feedback d-block font-weight-light" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold" for="instructions">Instrucciones</label>
+                <input type="hidden" name="instructions" id="instructions" value="{{ old('instructions') }}">
+                <trix-editor class="form-control @error('instructions') is-invalid @enderror" input="instructions"></trix-editor>
+
+                @error('instructions')
+                    <span class="invalid-feedback d-block font-weight-light" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <input type="submit" class="btn btn-dark" value="Añadir receta">
             </div>
         </form>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" defer></script>
 @endsection
