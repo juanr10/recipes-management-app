@@ -18,7 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/recipes',  'RecipeController@index');
+/**
+ * Recipes management routes
+ */
+Route::get('/recipes',  'RecipeController@index')->name('recipe.index');
+Route::get('/recipes/create',  'RecipeController@create')->name('recipe.create');
+Route::post('/recipes',  'RecipeController@store')->name('recipe.store');
 
 Auth::routes();
 
