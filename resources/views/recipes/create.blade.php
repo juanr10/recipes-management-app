@@ -13,7 +13,7 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <form action="{{ route('recipe.store') }}" method="POST" novalidate>
+        <form action="{{ route('recipe.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="form-group">
                 <label class="font-weight-bold" for="title">Título Receta</label>
@@ -59,6 +59,17 @@
                 <trix-editor class="form-control @error('instructions') is-invalid @enderror" input="instructions"></trix-editor>
 
                 @error('instructions')
+                    <span class="invalid-feedback d-block font-weight-light" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold" for="image">Imagen</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image">
+
+                @error('image')
                     <span class="invalid-feedback d-block font-weight-light" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
