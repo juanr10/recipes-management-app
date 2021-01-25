@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use App\RecipesCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,21 +24,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = [
-            'Receta Pastel de zanahoria',
-            'Receta Empanada de carne',
-            'Receta Pizza vegana'
-        ];
-
-        $categories = [
-            'Postres',
-            'Bebidas',
-            'Vegetariana'
-        ];
+        $recipes = Auth::user()->recipes;
 
         return view('recipes.index')
                     ->with('recipes', $recipes)
-                    ->with('categories', $categories);
+                    ->with('categories', $recipes);
     }
 
     /**
@@ -47,7 +38,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $categories = DB::table('recipe_categories')->pluck('name', 'id');
+        $categories = RecipesCategories::all(['id', 'name']);
 
         return view('recipes.create')
             ->with('categories', $categories);
