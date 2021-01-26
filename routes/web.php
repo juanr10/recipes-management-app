@@ -26,6 +26,7 @@ Route::get('/recipes/create',  'RecipeController@create')->name('recipe.create')
 Route::post('/recipes',  'RecipeController@store')->name('recipe.store');
 Route::get('/recipes/{recipe}',  'RecipeController@show')->name('recipe.show');
 Route::get('/recipes/edit',  'RecipeController@edit')->name('recipe.edit');
+Route::get('/recipes/destroy',  'RecipeController@destroy')->name('recipe.destroy');
 
 Auth::routes();
 

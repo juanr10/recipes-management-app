@@ -15,7 +15,7 @@
         <div class="recipe-meta mt-2">
             <p>
                 <span class="font-weight-bold text-primary">
-                    Escrito en:
+                    Categoría:
                 </span>
                 {{ $recipe->category->name }}
             </p>
