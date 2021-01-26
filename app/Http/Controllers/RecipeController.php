@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use App\RecipesCategories;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\StoreRecipeRequest;
@@ -14,7 +13,7 @@ class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'show']);
     }
 
     /**
