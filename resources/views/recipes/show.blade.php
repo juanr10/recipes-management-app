@@ -23,7 +23,7 @@
                 <span class="font-weight-bold text-primary">
                     Autor:
                 </span>
-                {{ $recipe->user_id }}
+                {{ $recipe->author->name }}
             </p>
             <p>
                 <span class="font-weight-bold text-primary">
@@ -42,7 +42,7 @@
 
             <div class="instructions">
                 <h2 class="my-3 text-primary">Instruciones</h2>
-                {!! $recipe->intructions !!}
+                {!! $recipe->instructions !!}
             </div>
         </div>
     </article>
