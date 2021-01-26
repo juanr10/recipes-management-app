@@ -59,12 +59,11 @@ class RecipeController extends Controller
         $img = Image::make(public_path("storage/{$route_image}"))->fit(1000, 550);
         $img->save();
 
-        DB::table('recipes')->insert([
+        Auth::user()->recipes()->create([
             'title' => $recipe['title'],
             'ingredients' => $recipe['ingredients'],
             'instructions' => $recipe['instructions'],
             'image' => $route_image,
-            'user_id' => Auth::user()->id,
             'category_id' => $recipe['category'],
         ]);
 
