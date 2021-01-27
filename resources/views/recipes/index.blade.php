@@ -22,9 +22,20 @@
                     <td>{{ $recipe->title }}</td>
                     <td>{{ $recipe->category->name }}</td>
                     <td>
-                        <a href="{{ route('recipes.destroy', ['recipe' => $recipe]) }}" class="btn btn-danger mr-1">Eliminar</a>
-                        <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="btn btn-dark mr-1">Editar</a>
-                        <a href="{{ route('recipes.show', ['recipe' => $recipe]) }}" class="btn btn-success mr-1">Ver</a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-dark dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Acciones
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="{{ route('recipes.show', ['recipe' => $recipe]) }}" class="dropdown-item">Ver</a>
+                                <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="dropdown-item">Editar</a>
+                                <form method="post" action="{{ route('recipes.destroy', ['recipe' => $recipe]) }}">
+                                    @csrf
+                                    @method("DELETE")
+                                    <input type="submit" class="dropdown-item"  value="Eliminar">
+                                </form>
+                            </div>
+                          </div>
                     </td>
                 </tr>
                 @endforeach

@@ -67,7 +67,7 @@ class RecipeController extends Controller
             'category_id' => $recipe['category'],
         ]);
 
-        return redirect()->route('recipe.index');
+        return redirect()->route('recipes.index');
     }
 
     /**
@@ -131,6 +131,9 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
-        //
+        $this->authorize('delete', $recipe);
+        $recipe->delete();
+
+        return redirect()->route('recipes.index');
     }
 }

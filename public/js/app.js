@@ -71294,6 +71294,7 @@ Vue.component('recipe-date', __webpack_require__(/*! ./components/RecipeDate.vue
 var app = new Vue({
   el: '#app'
 });
+$('.dropdown-toggle').dropdown();
 
 /***/ }),
 

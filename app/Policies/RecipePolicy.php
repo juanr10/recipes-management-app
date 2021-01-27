@@ -65,7 +65,7 @@ class RecipePolicy
      */
     public function delete(User $user, Recipe $recipe)
     {
-        //
+        return $user->id === $recipe->user_id;
     }
 
     /**

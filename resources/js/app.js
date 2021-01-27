@@ -35,3 +35,5 @@ Vue.component('recipe-date', require('./components/RecipeDate.vue').default);
 const app = new Vue({
     el: '#app',
 });
+
+$('.dropdown-toggle').dropdown()
