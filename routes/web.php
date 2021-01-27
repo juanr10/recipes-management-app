@@ -21,12 +21,13 @@ Route::get('/', function () {
 /**
  * Recipes management routes
  */
-Route::get('/recipes',  'RecipeController@index')->name('recipe.index');
-Route::get('/recipes/create',  'RecipeController@create')->name('recipe.create');
-Route::post('/recipes',  'RecipeController@store')->name('recipe.store');
-Route::get('/recipes/{recipe}',  'RecipeController@show')->name('recipe.show');
-Route::get('/recipes/edit',  'RecipeController@edit')->name('recipe.edit');
-Route::get('/recipes/destroy',  'RecipeController@destroy')->name('recipe.destroy');
+Route::get('/recipes',  'RecipeController@index')->name('recipes.index');
+Route::get('/recipes/create',  'RecipeController@create')->name('recipes.create');
+Route::post('/recipes',  'RecipeController@store')->name('recipes.store');
+Route::get('/recipes/{recipe}',  'RecipeController@show')->name('recipes.show');
+Route::get('/recipes/{recipe}/edit',  'RecipeController@edit')->name('recipes.edit');
+Route::put('/recipes/{recipe}',  'RecipeController@update')->name('recipes.update');
+Route::get('/recipes/destroy',  'RecipeController@destroy')->name('recipes.destroy');
 
 Auth::routes();
 

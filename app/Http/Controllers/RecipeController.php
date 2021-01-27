@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\StoreRecipeRequest;
+use App\Http\Requests\UpdateRecipeRequest;
 
 class RecipeController extends Controller
 {
@@ -88,7 +89,9 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        $categories = RecipesCategories::all(['id', 'name']);
+
+        return view('recipes.edit', compact('recipe', 'categories'));
     }
 
     /**
@@ -98,9 +101,26 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(UpdateRecipeRequest $request, Recipe $recipe)
     {
-        //
+        //Verify if the recipe is from the user (policy)
+        $this->authorize('update', $recipe);
+
+        $recipe->title = $request->title;
+        $recipe->category_id = $request->category;
+        $recipe->ingredients = $request->ingredients;
+        $recipe->instructions = $request->instructions;
+
+        if ($request->image) {
+            $route_image = $request->image->store('upload-images-recipes', 'public');
+            $img = Image::make(public_path("storage/{$route_image}"))->fit(1000, 550);
+            $img->save();
+            $recipe->image = $route_image;
+        }
+
+        $recipe->save();
+
+        return redirect()->route('recipes.index');
     }
 
     /**

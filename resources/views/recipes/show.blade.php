@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('buttons')
-<a class="btn btn-dark mr-2" href="{{ route('recipe.index') }}">Volver</a>
+<a class="btn btn-dark mr-2" href="{{ route('recipes.index') }}">Volver</a>
 @endsection
 
 @section('content')
