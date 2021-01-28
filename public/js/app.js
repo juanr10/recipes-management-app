@@ -1934,12 +1934,11 @@ __webpack_require__.r(__webpack_exports__);
           var params = {
             id: _this.recipeId
           };
-          axios.post("recipes/{$this.recipeId}", {
+          axios.post("/recipes/".concat(_this.recipeId), {
             params: params,
             _method: 'delete'
           }).then(function (response) {
-            console.log(response);
-
+            // console.log(response);
             _this.$swal({
               title: 'Receta eliminada',
               text: "Se ha eliminado la receta con éxito.",
@@ -1947,9 +1946,14 @@ __webpack_require__.r(__webpack_exports__);
             }); //Refreshing DOM
 
 
-            _this.$el.parentNode.parentNode.parentNode.removeChild(_this.$el.parentNode.parentNode);
+            _this.$el.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(_this.$el.parentNode.parentNode.parentNode.parentNode);
           })["catch"](function (error) {
-            console.log(error);
+            // console.log(error);
+            _this.$swal({
+              title: 'Receta no eliminada',
+              text: "Debido a un error no se ha podido eliminar la receta, vuelva a intentarlo más tarde.",
+              icon: 'error'
+            });
           });
         }
       });
@@ -75703,11 +75707,13 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -75718,22 +75724,23 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //Install
 
 
 window.moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
  //SweetAlert Vue
 
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('recipe-date', __webpack_require__(/*! ./components/RecipeDate.vue */ "./resources/js/components/RecipeDate.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('delete-recipe', __webpack_require__(/*! ./components/DeleteRecipe.vue */ "./resources/js/components/DeleteRecipe.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('recipe-date', __webpack_require__(/*! ./components/RecipeDate.vue */ "./resources/js/components/RecipeDate.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('delete-recipe', __webpack_require__(/*! ./components/DeleteRecipe.vue */ "./resources/js/components/DeleteRecipe.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app'
 });
 $('.dropdown-toggle').dropdown();

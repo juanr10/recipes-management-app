@@ -9,6 +9,7 @@ require('./bootstrap');
 //Install Moment.js
 //MomentJs
 window.moment = require('moment');
+import axios from 'axios';
 import Vue from 'vue';
 //SweetAlert Vue
 import VueSweetalert2 from 'vue-sweetalert2';

@@ -24,9 +24,9 @@ export default {
                         id: this.recipeId
                     }
 
-                    axios.post(`recipes/{$this.recipeId}`, {params, _method: 'delete'})
+                    axios.post(`/recipes/${this.recipeId}`, {params, _method: 'delete'})
                     .then(response => {
-                        console.log(response);
+                        // console.log(response);
                         this.$swal({
                         title: 'Receta eliminada',
                         text: "Se ha eliminado la receta con éxito.",
@@ -34,9 +34,14 @@ export default {
                         });
 
                         //Refreshing DOM
-                        this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+                        this.$el.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode.parentNode);
                     }).catch(error => {
-                        console.log(error);
+                        // console.log(error);
+                        this.$swal({
+                        title: 'Receta no eliminada',
+                        text: "Debido a un error no se ha podido eliminar la receta, vuelva a intentarlo más tarde.",
+                        icon: 'error',
+                        });
                     });
                 }
             });
