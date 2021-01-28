@@ -29,11 +29,9 @@
                             <div class="dropdown-menu">
                                 <a href="{{ route('recipes.show', ['recipe' => $recipe]) }}" class="dropdown-item">Ver</a>
                                 <a href="{{ route('recipes.edit', ['recipe' => $recipe]) }}" class="dropdown-item">Editar</a>
-                                <form method="post" action="{{ route('recipes.destroy', ['recipe' => $recipe]) }}">
-                                    @csrf
-                                    @method("DELETE")
-                                    <input type="submit" class="dropdown-item"  value="Eliminar">
-                                </form>
+                                <delete-recipe
+                                    recipe-id={{ $recipe->id }}
+                                ></delete-recipe>
                             </div>
                           </div>
                     </td>
