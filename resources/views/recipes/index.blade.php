@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $recipe->title }}</td>
                     <td>{{ $recipe->category->name }}</td>
-                    <td>{{ $recipe->created_at->format('d-m-Y H:s:i') }}</td>
+                    <td>{{ $recipe->created_at->format('d-m-Y') }}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-dark dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

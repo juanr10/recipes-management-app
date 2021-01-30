@@ -9,11 +9,12 @@ use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'show']);
+    }
+
     public function index()
     {
         //
@@ -26,6 +27,8 @@ class ProfileController extends Controller
 
     public function edit(Profile $profile)
     {
+        $this->authorize('view', $profile);
+
         return view('profiles.edit', compact('profile'));
     }
 
