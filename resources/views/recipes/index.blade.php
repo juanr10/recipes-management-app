@@ -41,5 +41,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="col-12 mt-4 justify-content-center d-flex">
+            {{ $recipes->links() }}
+        </div>
     </div>
 @endsection

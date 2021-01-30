@@ -21,6 +21,8 @@ class RecipeController extends Controller
     {
         $recipes = Auth::user()->recipes;
 
+        $recipes = Recipe::where('user_id', Auth::user()->id)->paginate(8);
+
         return view('recipes.index', compact('recipes'));
     }
 
