@@ -58,12 +58,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profiles.show', ['profile' => auth()->user()->profile]) }}">
-                                        <i class="fas fa-user"></i>  {{ __('Mi perfil') }}
+                                        <i class="fas fa-user"></i>  {{ __(' Mi perfil') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                                        <i class="fas fa-power-off"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

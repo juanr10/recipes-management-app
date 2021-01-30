@@ -13,7 +13,8 @@
                 <tr class="">
                     <th scope="col">Título</th>
                     <th scope="col">Categoría</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Creada</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                 <tr>
                     <td>{{ $recipe->title }}</td>
                     <td>{{ $recipe->category->name }}</td>
+                    <td>{{ $recipe->created_at->format('d-m-Y H:s:i') }}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-dark dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
