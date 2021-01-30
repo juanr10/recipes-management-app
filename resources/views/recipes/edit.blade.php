@@ -84,7 +84,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-dark mt-2" value="Editar receta">
+                <input type="submit" class="btn btn-dark mt-2" value="Actualizar receta">
             </div>
         </form>
     </div>

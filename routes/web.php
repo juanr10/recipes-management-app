@@ -26,5 +26,9 @@ Route::get('/recipes/{recipe}/edit',  'RecipeController@edit')->name('recipes.ed
 Route::put('/recipes/{recipe}',  'RecipeController@update')->name('recipes.update');
 Route::delete('/recipes/{recipe}',  'RecipeController@destroy')->name('recipes.destroy');
 
+Route::get('/profiles/{profile}', 'ProfileController@show')->name('profiles.show');
+Route::get('/profiles/{profile}/edit',  'ProfileController@edit')->name('profiles.edit');
+Route::put('/profiles/{profile}',  'ProfileController@update')->name('profiles.update');
+
 Auth::routes();
 
