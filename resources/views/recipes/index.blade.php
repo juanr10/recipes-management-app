@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('buttons')
-    <a class="btn btn-outline-dark mr-2" href="{{ route('recipes.create') }}">Crear Receta</a>
+    <a class="btn btn-outline-dark mr-2" href="{{ route('recipes.create') }}"><i class="fas fa-plus-circle"></i> Crear Receta</a>
 @endsection
 
 @section('content')

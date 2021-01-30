@@ -5,7 +5,7 @@
 @endsection
 
 @section('buttons')
-<a class="btn btn-outline-dark mr-2" href="{{ route('recipes.index') }}">Volver</a>
+<a class="btn btn-outline-dark mr-2" href="{{ route('recipes.index') }}"><i class="fas fa-arrow-circle-left"></i> Volver</a>
 @endsection
 
 @section('content')
