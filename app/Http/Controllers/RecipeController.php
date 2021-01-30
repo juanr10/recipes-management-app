@@ -59,6 +59,8 @@ class RecipeController extends Controller
 
     public function edit(Recipe $recipe)
     {
+        $this->authorize('view', $recipe);
+
         $categories = RecipesCategories::all(['id', 'name']);
 
         return view('recipes.edit', compact('recipe', 'categories'));
