@@ -1,1 +1,14 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+//Font awesome
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//App styles
+@import 'recipes';
