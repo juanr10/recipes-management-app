@@ -26,9 +26,7 @@ class RecipeController extends Controller
     {
         $recipes = Auth::user()->recipes;
 
-        return view('recipes.index')
-                    ->with('recipes', $recipes)
-                    ->with('categories', $recipes);
+        return view('recipes.index', compact('recipes'));
     }
 
     /**
@@ -115,6 +113,7 @@ class RecipeController extends Controller
             $route_image = $request->image->store('upload-images-recipes', 'public');
             $img = Image::make(public_path("storage/{$route_image}"))->fit(1000, 550);
             $img->save();
+
             $recipe->image = $route_image;
         }
 

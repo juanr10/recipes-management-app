@@ -5,7 +5,7 @@
 @endsection
 
 @section('buttons')
-<a class="btn btn-dark mr-2" href="{{ route('recipes.index') }}">Volver</a>
+    <a class="btn btn-outline-dark mr-2" href="{{ route('profiles.show', ['profile' => auth()->user()->profile]) }}">Volver</a>
 @endsection
 
 @section('content')

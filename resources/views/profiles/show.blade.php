@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('buttons')
+    <a class="btn btn-outline-dark mr-2" href="{{ route('recipes.index') }}">Mis Recetas</a>
+    <a class="btn btn-outline-dark mr-2" href="{{ route('profiles.edit', ['profile' => auth()->user()->profile] ) }}">Editar Perfil</a>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
