@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('buttons')
-<a class="btn btn-dark mr-2" href="{{ route('recipes.index') }}"><i class="fas fa-arrow-circle-left"></i> Volver</a>
+<a class="btn btn-dark mr-2"
+    href="{{ app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() == 'profiles.show' ? route('profiles.show', ['profile' => auth()->user()->profile]) : route('recipes.index') }}">
+    <i class="fas fa-arrow-circle-left"></i> Volver</a>
 @endsection
 
 @section('content')
