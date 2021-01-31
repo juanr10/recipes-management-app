@@ -35,8 +35,8 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ $recipe->title }}</h5>
                         </div>
-                        <div class="card-footer">
-                          <a class="btn btn-dark mt-4" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">Ver receta</a>
+                        <div class="card-footer justify-content-center d-flex">
+                          <a class="btn btn-block btn-dark mt-1" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">Ver receta</a>
                         </div>
                       </div>
                 </div>

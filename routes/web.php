@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home.index');
 
 // Route::get('/recipes',  'RecipeController@index')->name('recipes.index');
 // Route::get('/recipes/create',  'RecipeController@create')->name('recipes.create');
