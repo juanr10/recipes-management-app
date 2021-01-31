@@ -1986,6 +1986,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['recipeId', 'like', 'likes'],
   data: function data() {
     return {
+      isActive: this.like,
       totalLikes: this.likes
     };
   },
@@ -2000,15 +2001,13 @@ __webpack_require__.r(__webpack_exports__);
           _this.$data.totalLikes--;
         }
 
+        _this.isActive = !_this.isActive;
         console.log(response);
       })["catch"](function (error) {
-        console.log(error);
+        if (error.response.status === 401) {
+          window.location = '/register';
+        }
       });
-    }
-  },
-  computed: {
-    likesQuantity: function likesQuantity() {
-      return this.totalLikes;
     }
   }
 });
@@ -63524,14 +63523,12 @@ var render = function() {
   return _c("div", [
     _c("span", {
       staticClass: "like-btn",
-      class: { "like-active": this.like },
+      class: { "like-active": _vm.isActive },
       on: { click: _vm.likeRecipe }
     }),
     _vm._v(" "),
     _c("p", [
-      _vm._v(
-        "A " + _vm._s(_vm.likesQuantity) + " usuarios les gusta esta receta."
-      )
+      _vm._v("A " + _vm._s(_vm.totalLikes) + " usuarios les gusta esta receta.")
     ])
   ])
 }
