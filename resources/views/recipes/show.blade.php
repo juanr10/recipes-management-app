@@ -46,6 +46,8 @@
                 <h2 class="my-3 text-primary">Instruciones</h2>
                 {!! $recipe->instructions !!}
             </div>
+
+            <like-button></like-button>
         </div>
     </article>
 @endsection

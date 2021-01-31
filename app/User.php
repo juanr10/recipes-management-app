@@ -47,15 +47,21 @@ class User extends Authenticatable
         });
     }
 
-    /** Relation 1:n to Recipes*/
+    /** Relation 1:n to Recipes */
     public function recipes()
     {
         return $this->hasMany(Recipe::class);
     }
 
-    /** Relation 1:1 to Profiles*/
+    /** Relation 1:1 to Profiles */
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    /** Recipes that the user has liked */
+    public function like()
+    {
+        return $this->belongsToMany(Recipe::class, 'likes_recipe');
     }
 }

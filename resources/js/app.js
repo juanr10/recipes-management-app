@@ -20,6 +20,7 @@ Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 Vue.use(VueSweetalert2);
 Vue.component('recipe-date', require('./components/RecipeDate.vue').default);
 Vue.component('delete-recipe', require('./components/DeleteRecipe.vue').default);
+Vue.component('like-button', require('./components/LikeButton.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,4 +32,10 @@ const app = new Vue({
     el: '#app',
 });
 
-$('.dropdown-toggle').dropdown()
+
+$('.dropdown-toggle').dropdown();
+
+$('.like-btn').on('click', function() {
+    $(this).toggleClass('like-active');
+ });
+
