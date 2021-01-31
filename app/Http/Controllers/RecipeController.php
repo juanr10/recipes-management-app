@@ -61,6 +61,11 @@ class RecipeController extends Controller
         return view('recipes.show', compact('recipe', 'like', 'likes'));
     }
 
+    public function liked()
+    {
+        return view('recipes.liked');
+    }
+
     public function edit(Recipe $recipe)
     {
         $this->authorize('view', $recipe);

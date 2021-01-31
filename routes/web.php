@@ -26,6 +26,7 @@ Route::get('/', function () {
 // Route::put('/recipes/{recipe}',  'RecipeController@update')->name('recipes.update');
 // Route::delete('/recipes/{recipe}',  'RecipeController@destroy')->name('recipes.destroy');
 
+Route::get('/recipes/liked',  'RecipeController@liked')->name('recipes.liked');
 Route::resource('recipes', 'RecipeController');
 
 Route::get('/profiles/{profile}', 'ProfileController@show')->name('profiles.show');
