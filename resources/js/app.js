@@ -6,14 +6,15 @@
 
 require('./bootstrap');
 
-//Install Moment.js
 //MomentJs
 window.moment = require('moment');
-import axios from 'axios';
-import Vue from 'vue';
+//Owl carousel
+import 'owl.carousel';
 //SweetAlert Vue
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+import Vue from 'vue';
 window.Vue = require('vue');
 
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
@@ -27,15 +28,29 @@ Vue.component('like-button', require('./components/LikeButton.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
     el: '#app',
 });
 
-
+//Dropdown button bootstrap
 $('.dropdown-toggle').dropdown();
 
-$('.like-btn').on('click', function() {
-    $(this).toggleClass('like-active');
- });
+//Owl carousel
+jQuery('.owl-carousel').owlCarousel({
+    margin: 10,
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    responsive: {
+        0 : {
+            items: 1
+        },
+        600 : {
+            items: 2
+        },
+        1000 : {
+            items: 3
+        }
+    }
+});
 
