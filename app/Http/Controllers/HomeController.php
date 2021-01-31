@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use App\RecipesCategories;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newRecipes = Recipe::latest()->take(6)->get();
+        $latestRecipes = Recipe::latest()->take(6)->get();
 
-        return view('home', compact('newRecipes'));
+        $categories = RecipesCategories::all();
+        $recipes = [];
+
+        foreach ($categories as $key => $category) {
+            $recipes[Str::slug($category->name)][] = Recipe::where('category_id', $category->id)->take(3)->get();
+        }
+
+
+        return view('home', compact('latestRecipes', 'recipes'));
     }
 }

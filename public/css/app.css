@@ -15519,12 +15519,16 @@ body {
 .bg-primary .navbar-brand {
   font-family: "Nanum Gothic", sans-serif;
   font-size: 2rem;
-  color: #FFF !important;
+  color: white !important;
   text-decoration: none;
 }
 
 .bg-primary .navbar-brand:hover {
   color: white;
+}
+
+.nav-link {
+  color: white !important;
 }
 
 trix-editor {
@@ -15538,7 +15542,7 @@ trix-editor {
 }
 
 .bar {
-  background-color: #ED4646 !important;
+  background-color: #343a40 !important;
 }
 
 .date {

@@ -5,11 +5,15 @@ body {
 .bg-primary .navbar-brand{
     font-family: $font-family-nanum;
     font-size: 2rem;
-    color: #FFF!important;
+    color: white !important;
     text-decoration: none;
+
     &:hover {
         color: white;
     }
+}
+.nav-link{
+    color: white !important;
 }
 trix-editor {
     min-height: 400px;
@@ -20,7 +24,7 @@ trix-editor {
     font-weight: bold;
 }
 .bar{
-    background-color: #ED4646!important
+    background-color: #343a40 !important;
 }
 .date {
     color: #ED4646 !important
