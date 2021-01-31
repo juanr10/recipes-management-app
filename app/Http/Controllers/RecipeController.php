@@ -54,7 +54,11 @@ class RecipeController extends Controller
 
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        $like = Auth::user() ? Auth::user()->like->contains($recipe->id) : false;
+
+        $likes = $recipe->likes->count();
+
+        return view('recipes.show', compact('recipe', 'like', 'likes'));
     }
 
     public function edit(Recipe $recipe)

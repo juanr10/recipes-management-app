@@ -32,5 +32,7 @@ Route::get('/profiles/{profile}', 'ProfileController@show')->name('profiles.show
 Route::get('/profiles/{profile}/edit',  'ProfileController@edit')->name('profiles.edit');
 Route::put('/profiles/{profile}',  'ProfileController@update')->name('profiles.update');
 
+Route::post('/recipes/{recipe}',  'LikesController@update')->name('likes.update');
+
 Auth::routes();
 
