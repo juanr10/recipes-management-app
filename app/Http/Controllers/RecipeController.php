@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
-use App\RecipesCategories;
+use App\CategoryRecipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -26,7 +26,7 @@ class RecipeController extends Controller
 
     public function create()
     {
-        $categories = RecipesCategories::all(['id', 'name']);
+        $categories = CategoryRecipe::all(['id', 'name']);
 
         return view('recipes.create')
             ->with('categories', $categories);
@@ -70,7 +70,7 @@ class RecipeController extends Controller
     {
         $this->authorize('view', $recipe);
 
-        $categories = RecipesCategories::all(['id', 'name']);
+        $categories = CategoryRecipe::all(['id', 'name']);
 
         return view('recipes.edit', compact('recipe', 'categories'));
     }

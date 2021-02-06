@@ -13,7 +13,7 @@ class Recipe extends Model
     /** Relation 1:1 to Category*/
     public function category()
     {
-        return $this->belongsTo(RecipesCategories::class);
+        return $this->belongsTo(CategoryRecipe::class);
     }
 
     /** Relation 1:1 to User*/

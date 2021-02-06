@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
-use App\RecipesCategories;
+use App\CategoryRecipe;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class HomeController extends Controller
         //latest recipes
         $latestRecipes = Recipe::latest()->take(6)->get();
 
-        $categories = RecipesCategories::all();
+        $categories = CategoryRecipe::all();
         $recipes = [];
 
         foreach ($categories as $key => $category) {

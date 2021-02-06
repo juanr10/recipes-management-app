@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use View;
-use App\RecipesCategories;
+use App\CategoryRecipe;
 use Illuminate\Support\ServiceProvider;
 
 class CategoriesProvider extends ServiceProvider
@@ -26,7 +26,7 @@ class CategoriesProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('categories', RecipesCategories::all());
+            $view->with('categories', CategoryRecipe::all());
         });
     }
 }

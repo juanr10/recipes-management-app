@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
-use App\RecipesCategories;
+use App\CategoryRecipe;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show(RecipesCategories $recipeCategory)
+    public function show(CategoryRecipe $recipeCategory)
     {
         $recipes = Recipe::where('category_id', $recipeCategory->id)->paginate(3);
 
