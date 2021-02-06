@@ -7,25 +7,29 @@
 @endsection
 
 @section('content')
-    <article class="content-recipe">
+    <article class="content-recipe bg-white p-5 shadow">
         <h1 class="text-center mb-4">{{ $recipe->title }}</h1>
 
         <div class="image-recipe">
             <img src="/storage/{{ $recipe->image }}" alt="recipe-image" class="w-100">
         </div>
 
-        <div class="recipe-meta mt-2">
+        <div class="recipe-meta mt-3">
             <p>
                 <span class="font-weight-bold text-primary">
                     Categoría:
+                    <a href="{{ route('categories.show', ['recipeCategory' => $recipe->category->id]) }}">
+                        {{ $recipe->category->name }}
+                    </a>
                 </span>
-                {{ $recipe->category->name }}
             </p>
             <p>
                 <span class="font-weight-bold text-primary">
                     Autor:
+                    <a href="{{ route('profiles.show', ['profile' => $recipe->author->id]) }}">
+                        {{ $recipe->author->name }}
+                    </a>
                 </span>
-                {{ $recipe->author->name }}
             </p>
             <p>
                 <span class="font-weight-bold text-primary">
