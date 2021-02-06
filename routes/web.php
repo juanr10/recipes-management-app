@@ -24,6 +24,7 @@ Route::get('/', 'HomeController@index')->name('home.index');
 // Route::put('/recipes/{recipe}',  'RecipeController@update')->name('recipes.update');
 // Route::delete('/recipes/{recipe}',  'RecipeController@destroy')->name('recipes.destroy');
 
+Route::get('/search',  'RecipeController@search')->name('recipes.search');
 Route::get('/recipes/liked',  'RecipeController@liked')->name('recipes.liked');
 Route::resource('recipes', 'RecipeController');
 

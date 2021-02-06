@@ -25,7 +25,7 @@ class CategoriesProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*', function($view) {
+        View::composer('*', function ($view) {
             $view->with('categories', RecipesCategories::all());
         });
     }

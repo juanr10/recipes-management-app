@@ -2,6 +2,21 @@
 
 @section('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+@endsection
+
+@section('searcher')
+    <div class="searcher-categories">
+        <form action={{ route('recipes.search') }} class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-md-4 search-text">
+                    <p class="display-4">Busca una receta</p>
+                    <input type="search" name="search" class="form-control" placeholder="Buscar Receta">
+                </div>
+            </div>
+        </form>
+    </div>
+@endsection
+
 @section('content')
     <div class="container new-recipes">
         <h2 class="title-category text-uppercase mt-5 mb-4"> Últimas recetas</h2>
