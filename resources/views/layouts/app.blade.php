@@ -88,7 +88,7 @@
                     <ul class="navbar-nav w-100 d-flex justify-content-between">
                         @foreach ($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link">
+                            <a class="nav-link" href="{{ route('categories.show', ['recipeCategory' => $category]) }}">
                                {{ $category->name }}
                             </a>
                         </li>
@@ -97,8 +97,6 @@
                 </div>
             </div>
         </nav>
-{{--
-        href="{{ route('categorias.show', ['categoriaReceta' => $categoria->id ]) }}" --}}
 
         <div class="container">
             <div class="row">

@@ -27,6 +27,8 @@ Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/recipes/liked',  'RecipeController@liked')->name('recipes.liked');
 Route::resource('recipes', 'RecipeController');
 
+Route::get('/category/{recipeCategory}',  'CategoryController@show')->name('categories.show');
+
 Route::get('/profiles/{profile}', 'ProfileController@show')->name('profiles.show');
 Route::get('/profiles/{profile}/edit',  'ProfileController@edit')->name('profiles.edit');
 Route::put('/profiles/{profile}',  'ProfileController@update')->name('profiles.update');
