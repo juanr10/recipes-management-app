@@ -26,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Popular recipes
+        // $popularRecipes = Recipe::has('likes', '>', 1)->get();
+        $popularRecipes = Recipe::withCount('likes')->orderBy('likes_count', 'desc')->take(3)->get();
+
+        //latest recipes
         $latestRecipes = Recipe::latest()->take(6)->get();
 
         $categories = RecipesCategories::all();
@@ -36,6 +41,6 @@ class HomeController extends Controller
         }
 
 
-        return view('home', compact('latestRecipes', 'recipes'));
+        return view('home', compact('latestRecipes', 'popularRecipes', 'recipes'));
     }
 }
