@@ -1,0 +1,3 @@
+-Paginate recipes liked view
+-Add helper for routes control when user clicks 'Volver'.
+-Change styles

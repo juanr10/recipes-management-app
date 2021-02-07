@@ -16,14 +16,6 @@
                 <p class="pt-3">{{ $recipe->title }}</p>
                 <a class="btn btn-outline-dark" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">Ver receta</a>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <p class="pt-3">{{ $recipe->title }}</p>
-                <a class="btn btn-outline-dark" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">Ver receta</a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <p class="pt-3">{{ $recipe->title }}</p>
-                <a class="btn btn-outline-dark" href="{{ route('recipes.show', ['recipe' => $recipe]) }}">Ver receta</a>
-            </li>
             @empty
             <p class="text-center w-100">Aún no te ha gustado ninguna receta.</p>
             @endforelse
