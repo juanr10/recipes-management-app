@@ -2,7 +2,7 @@
 
 @section('buttons')
 <a class="btn btn-dark mr-2"
-    href="{{ app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() == 'profiles.show' ? route('profiles.show', ['profile' => auth()->user()->profile]) : route('recipes.index') }}">
+    href="{{ url()->previous() }}">
     <i class="fas fa-arrow-circle-left"></i> Volver</a>
 @endsection
 

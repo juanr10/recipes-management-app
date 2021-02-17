@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('buttons')
-    <a class="btn btn-dark mr-2" href="{{ route('recipes.index') }}"><i class="fas fa-arrow-circle-left"></i>  Volver</a>
+    <a class="btn btn-dark mr-2" href="{{ url()->previous() }}"><i class="fas fa-arrow-circle-left"></i>  Volver</a>
 @endsection
 
 @section('content')
