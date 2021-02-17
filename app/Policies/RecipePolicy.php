@@ -30,7 +30,7 @@ class RecipePolicy
      */
     public function view(User $user, Recipe $recipe)
     {
-        //
+        return $user->id === $recipe->user_id;
     }
 
     /**

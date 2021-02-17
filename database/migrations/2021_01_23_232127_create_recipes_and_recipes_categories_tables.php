@@ -13,7 +13,7 @@ class CreateRecipesAndRecipesCategoriesTables extends Migration
      */
     public function up()
     {
-        Schema::create('recipes_categories', function (Blueprint $table) {
+        Schema::create('category_recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateRecipesAndRecipesCategoriesTables extends Migration
             $table->text('instructions');
             $table->string('image');
             $table->foreignId('user_id')->references('id')->on('users')->comment('The user to whom the recipe belongs');
-            $table->foreignId('category_id')->references('id')->on('recipes_categories')->comment('Recipe categories');
+            $table->foreignId('category_id')->references('id')->on('category_recipes')->comment('Recipe categories');
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateRecipesAndRecipesCategoriesTables extends Migration
     public function down()
     {
         Schema::dropIfExists('recipes');
-        Schema::dropIfExists('recipes_categories');
+        Schema::dropIfExists('category_recipes');
     }
 }

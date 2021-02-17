@@ -13,12 +13,18 @@ class Recipe extends Model
     /** Relation 1:1 to Category*/
     public function category()
     {
-        return $this->belongsTo(RecipesCategories::class);
+        return $this->belongsTo(CategoryRecipe::class);
     }
 
     /** Relation 1:1 to User*/
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /** Likes received on a recipe*/
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes_recipe');
     }
 }

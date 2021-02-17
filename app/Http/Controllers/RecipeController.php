@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
-use App\RecipesCategories;
+use App\CategoryRecipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -14,19 +14,19 @@ class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('auth', ['except' => ['show', 'search']]);
     }
 
     public function index()
     {
-        $recipes = Auth::user()->recipes;
+        $recipes = Recipe::where('user_id', Auth::user()->id)->paginate(8);
 
         return view('recipes.index', compact('recipes'));
     }
 
     public function create()
     {
-        $categories = RecipesCategories::all(['id', 'name']);
+        $categories = CategoryRecipe::all(['id', 'name']);
 
         return view('recipes.create')
             ->with('categories', $categories);
@@ -54,12 +54,23 @@ class RecipeController extends Controller
 
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', compact('recipe'));
+        $like = Auth::user() ? Auth::user()->like->contains($recipe->id) : false;
+
+        $likes = $recipe->likes->count();
+
+        return view('recipes.show', compact('recipe', 'like', 'likes'));
+    }
+
+    public function liked()
+    {
+        return view('recipes.liked');
     }
 
     public function edit(Recipe $recipe)
     {
-        $categories = RecipesCategories::all(['id', 'name']);
+        $this->authorize('view', $recipe);
+
+        $categories = CategoryRecipe::all(['id', 'name']);
 
         return view('recipes.edit', compact('recipe', 'categories'));
     }
@@ -93,5 +104,15 @@ class RecipeController extends Controller
         $recipe->delete();
 
         return redirect()->route('recipes.index');
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->search;
+
+        $recipes = Recipe::where('title', 'like', '%'. $request->search .'%')->paginate(10);
+        $recipes->appends(['search' => $searchTerm]);
+
+        return view('search.show', compact('recipes', 'searchTerm'));
     }
 }
